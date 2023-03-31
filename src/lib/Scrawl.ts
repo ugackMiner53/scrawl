@@ -11,6 +11,8 @@ export let scrawlInfo = writable({
 
 export let valid = writable(false);
 export let readonly = writable(false);
+export let obfuscateAI = writable(false);
+export let storyText = writable("");
 
 function get__store(store) : any {
     let $val

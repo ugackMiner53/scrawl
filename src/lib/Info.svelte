@@ -1,9 +1,13 @@
 <script lang="ts">
     import * as Map from "./Map";
-    import { scrawlInfo, valid, sha256sum, readonly, copyToClipboard } from "./Scrawl";
+    import { scrawlInfo, valid, readonly, storyText, obfuscateAI, sha256sum, copyToClipboard } from "./Scrawl";
 
     function scrawlStory() {
-        console.log(scrawlInfo);
+        if ($obfuscateAI) {
+            $storyText = $storyText.split("").map(char => Object.keys(Map.alphabet).includes(char) ? (<string>Map.alphabet[char]).charAt(Math.floor(Math.random()*(<string>Map.alphabet[char]) .length)) : char).join(" ");
+            console.log($storyText)
+        }
+
         $scrawlInfo.date = new Date().toISOString();
         sha256sum((<HTMLTextAreaElement>document.getElementById("storyInput")).value).then((checksum) => {
             $scrawlInfo.checksum = checksum;
@@ -12,6 +16,15 @@
             // Replace this with an insertion into the text
             copyToClipboard(invisibleData);
         });
+    }
+
+    function aiObfuscateClick() {
+        let value = localStorage.getItem("obfuscateAI");
+        if (value == null) {
+            window.alert("WARNING: The AI Obfuscator will break screen readers and other accessibility tools from working. This warning will not show again.");
+        }
+        $obfuscateAI = !$obfuscateAI;
+        localStorage.setItem("obfuscateAI", $obfuscateAI);
     }
 </script>
 
@@ -39,8 +52,10 @@
 <div>
     <p style="color: {$valid ? "lime" : "yellow"};">{$valid ? "Document has not been changed since last Scrawl" : "Document may have changed since last scrawl"}</p>
 </div>
-{/if}
-
-{#if !$readonly}
+{:else}
+<div>
+    <label for="aiObfuscateBox">Anti-AI Mode: </label>
+    <input type="checkbox" name="Obfuscate Text" id="aiObfuscateBox" on:click={aiObfuscateClick}>
+</div>
 <button id="scrawlButton" on:click={scrawlStory}>Scrawl my story!</button>
 {/if}

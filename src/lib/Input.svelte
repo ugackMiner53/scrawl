@@ -1,9 +1,6 @@
 <script lang="ts">
     import * as Map from "./Map";
-    import { parseScrawlStory, scrawlInfo, readonly } from "./Scrawl";
-
-    globalThis.a = Map.stringToInvisible;
-    globalThis.b = Map.invisibleToString;
+    import { parseScrawlStory, scrawlInfo, storyText, readonly } from "./Scrawl";
 
     function handleTextChange(event: Event) {
         if ((<HTMLTextAreaElement>event.target).value == "") {
@@ -20,4 +17,4 @@
     }
 </script>
 
-<textarea name="Story Input" placeholder="Enter a story..." id="storyInput" spellcheck="false" on:emptied={handleTextChange} on:input={handleTextChange} />
+<textarea name="Story Input" placeholder="Enter a story..." id="storyInput" spellcheck="false" bind:value={$storyText} on:emptied={handleTextChange} on:input={handleTextChange} />

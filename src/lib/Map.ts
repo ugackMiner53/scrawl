@@ -10,14 +10,6 @@ export const invisible = {
     "7": "\u206e",   // national-digit-shapes
     "8": "\u206f",   // nominal-digit-shapes
     ",": "\u2060",   // word-joiner
-    
-    // "\u1784",   // khmer-vowel-inherent-aq       Removed for being joining characters
-    // "\u3164",   // hangul-filler
-    // "\u115f",   // hangul-choseong-filler
-    // "\u1160",   // hangul-jungseong-filler
-    // "\u1785",   // khmer-vowel-inherent-aa
-    // "\u061c",   // arabic-letter-mark
-    // "\u180e",   // mongolian-vowel-separator
 };
 
 export function stringToInvisible(input : string) : string {
@@ -30,21 +22,63 @@ export function invisibleToString(input : string) : string {
 }
 
 // Alphabet
-export const alphabetLower = {
-    "a": [
-        "\u0430",   // а
-        "\u1d86a"   // 𝚊
-    ],
-    "b": [
-
-    ],
-    "c": [
-
-    ],
-    "d": [
-
-    ]
-
+export const alphabet = {
+    // #region Uppercase
+    "A": "AΑАꓮ",
+    "B": "BВꓐΒ",
+    "C": "CСꓚ",
+    "D": "D",
+    "E": "EΕЕꓰ",
+    "F": "Fꓝ",
+    "G": "Gꓖ",
+    "H": "HΗНᕼꓧ",
+    "I": "IӀ",
+    "J": "Jᒍꓙ",
+    "K": "KΚКꓗ",
+    "L": "Lᒪꓡ",
+    "M": "MΜМꓟ",
+    "N": "NΝꓠ",
+    "O": "OΟОՕⵔꓳ",
+    "P": "PΡРꓑ",
+    "Q": "Qⵕ",
+    "R": "Rꓣ",
+    "S": "SЅՏꓢ",
+    "T": "TΤТꓔ",
+    "U": "UՍꓴ",
+    "V": "Vⴸꓦ",
+    "W": "WԜꓪ",
+    "X": "XΧХⵝꓫ",
+    "Y": "YΥҮꓬ",
+    "Z": "ZΖꓜ",
+    // #endregion 
+    // #region Lowercase
+    "a": "aа𝚊",
+    "b": "bᖯ𝖻",
+    "c": "cϲсᴄⲥꮯ𝖼𝚌",
+    "d": "dԁⅾꓒ𝖽",
+    "e": "eе𝖾𝚎",
+    "f": "f𝖿",
+    "g": "gɡց𝗀",
+    "h": "hհ𝗁",
+    "i": "iіᎥ𝗂",
+    "j": "jϳј𝗃",
+    "k": "k𝗄",
+    "l": "lƖ",
+    "m": "mⅿ𝗆",
+    "n": "nո𝗇",
+    "o": "oοоօ൦ჿᴏᴑⲟ𐐬𝗈",
+    "p": "pρрⲣ𝗉",
+    "q": "qԛ𝗊",
+    "r": "r𝗋",
+    "s": "sѕꜱ𐑈𝗌",
+    "t": "t𝗍",
+    "u": "uսᴜ𐓶𝗎",
+    "v": "vνᴠ𝗏",
+    "w": "wѡԝᴡ𝗐",
+    "x": "xх𝗑",
+    "y": "yу𝗒",
+    "z": "zᴢ𝗓",
+    // #endregion
 }
 
 export const digits = {
