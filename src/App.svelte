@@ -1,18 +1,10 @@
 <script lang="ts">
     import Input from "./lib/Input.svelte";
     import Info from "./lib/Info.svelte";
-
-    let scrawlInfo = {
-        title: "",
-        author: "",
-        link: "",
-        date: new Date(),
-        checksum: ""
-    }
+    import { scrawlInfo } from "./lib/Scrawl";
 
     globalThis.sc = scrawlInfo;
 
-    let readonly = false;
 </script>
 
 <main>
@@ -22,7 +14,7 @@
             <Input />
         </div>
         <div class="storyInfo">
-            <Info bind:scrawlInfo={scrawlInfo} {readonly} />
+            <Info />
         </div>
     </div>
 </main>

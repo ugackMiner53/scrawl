@@ -9,7 +9,7 @@ export const invisible = {
     "6": "\u2061",   // function-application
     "7": "\u206e",   // national-digit-shapes
     "8": "\u206f",   // nominal-digit-shapes
-    "9": "\u2060",   // word-joiner
+    ",": "\u2060",   // word-joiner
     
     // "\u1784",   // khmer-vowel-inherent-aq       Removed for being joining characters
     // "\u3164",   // hangul-filler
@@ -20,18 +20,33 @@ export const invisible = {
     // "\u180e",   // mongolian-vowel-separator
 };
 
-export function decToInvisible(input : string) : string {
-    return input.split("").map(digit => digit = invisible[digit]).join();
+export function stringToInvisible(input : string) : string {
+    return input.split("").map(letter => letter.codePointAt(0).toString(9)).join(",").split("").map(digit => digit = invisible[digit]).join("");
+    // return input.split("").map(digit => digit = invisible[digit]).join();
 }
 
-export function invisibleToDec(input : string) : string {
-    return input.split("").map(char => char = Object.keys(invisible).find(key => invisible[key] === char)).join();
+export function invisibleToString(input : string) : string {
+    return input.split("").map(digit => digit = Object.keys(invisible).find(key => invisible[key] === digit)).join("").split(",").map(letter => String.fromCharCode(parseInt(letter, 9))).join("");
 }
 
 // Alphabet
-export const alphabet = {
+export const alphabetLower = {
     "a": [
         "\u0430",   // а
         "\u1d86a"   // 𝚊
+    ],
+    "b": [
+
+    ],
+    "c": [
+
+    ],
+    "d": [
+
     ]
+
+}
+
+export const digits = {
+
 }
