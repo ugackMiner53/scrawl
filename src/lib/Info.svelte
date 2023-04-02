@@ -4,8 +4,7 @@
 
     function scrawlStory() {
         if ($obfuscateAI) {
-            $storyText = $storyText.split("").map(char => Object.keys(Map.alphabet).includes(char) ? Array.from(<string>Map.alphabet[char])[Math.floor(Math.random() * (Map.alphabet[char].length-1))] : char).join("");
-            console.log($storyText)
+            $storyText = $storyText.split("").map(char => Object.keys(Map.alphabet).includes(char) ? Array.from(<string>Map.alphabet[char])[Math.floor(Math.random() * (Array.from(Map.alphabet[char]).length-1))] : char).join("");
         }
 
         $scrawlInfo.date = new Date().toISOString();
