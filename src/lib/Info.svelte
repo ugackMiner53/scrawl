@@ -4,7 +4,7 @@
 
     function scrawlStory() {
         if ($obfuscateAI) {
-            $storyText = $storyText.split("").map(char => Object.keys(Map.alphabet).includes(char) ? (<string>Map.alphabet[char]).charAt(Math.floor(Math.random()*(<string>Map.alphabet[char]) .length)) : char).join(" ");
+            $storyText = $storyText.split("").map(char => Object.keys(Map.alphabet).includes(char) ? Array.from(<string>Map.alphabet[char])[Math.floor(Math.random() * (Map.alphabet[char].length-1))] : char).join("");
             console.log($storyText)
         }
 
@@ -24,7 +24,7 @@
             window.alert("WARNING: The AI Obfuscator will break screen readers and other accessibility tools from working. This warning will not show again.");
         }
         $obfuscateAI = !$obfuscateAI;
-        localStorage.setItem("obfuscateAI", $obfuscateAI);
+        localStorage.setItem("obfuscateAI", $obfuscateAI.toString());
     }
 </script>
 

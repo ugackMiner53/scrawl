@@ -14,6 +14,9 @@ export let readonly = writable(false);
 export let obfuscateAI = writable(false);
 export let storyText = writable("");
 
+globalThis.st = storyText;
+globalThis.gs = get__store;
+
 function get__store(store) : any {
     let $val
     store.subscribe($ => $val = $)()
