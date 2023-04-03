@@ -1,19 +1,22 @@
 <script lang="ts">
     import * as Map from "./Map";
-    import { scrawlInfo, valid, readonly, storyText, obfuscateAI, sha256sum, copyToClipboard } from "./Scrawl";
+    import { scrawlInfo, valid, readonly, storyText, obfuscateAI, sha256sum } from "./Scrawl";
 
     function scrawlStory() {
         if ($obfuscateAI) {
-            $storyText = $storyText.split("").map(char => Object.keys(Map.alphabet).includes(char) ? Array.from(<string>Map.alphabet[char])[Math.floor(Math.random() * (Array.from(Map.alphabet[char]).length-1))] : char).join("");
+            $storyText = $storyText.split("").map(char => Object.keys(Map.alphabet).includes(char) ? Array.from(Map.alphabet[char])[Math.floor(Math.random() * (Array.from(Map.alphabet[char]).length-1))] : char).join("");
         }
 
         $scrawlInfo.date = new Date().toISOString();
-        sha256sum((<HTMLTextAreaElement>document.getElementById("storyInput")).value).then((checksum) => {
+        sha256sum($storyText).then((checksum) => {
             $scrawlInfo.checksum = checksum;
         }).finally(() => {
             let invisibleData = "\u200b\u200c\ufeff\u2062" + Map.stringToInvisible(JSON.stringify($scrawlInfo)) + "\u2063\u2064\u2061";
-            // Replace this with an insertion into the text
-            copyToClipboard(invisibleData);
+            let storyArray = Array.from($storyText);
+            storyArray.splice(Math.floor(Math.random() * (storyArray.length-1)), 0, invisibleData);
+            $storyText = storyArray.join("");
+            $readonly = true;
+            $valid = true;
         });
     }
 

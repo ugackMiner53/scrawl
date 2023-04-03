@@ -8,6 +8,7 @@
             $scrawlInfo.title = "";
             $scrawlInfo.link = "";
             $scrawlInfo.checksum = "";
+            $readonly = false;
         } else if ((<HTMLTextAreaElement>event.target).value.includes("\u200b\u200c\ufeff\u2062"))  {
             $readonly = true;
             parseScrawlStory((<HTMLTextAreaElement>event.target).value);
