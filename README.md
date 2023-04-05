@@ -1,7 +1,7 @@
 # ![Scrawl Logo](./public/icon.svg) Scrawl
 A project to protect writing from plagiarism.
 
-Check it out at the [online demo]() here!
+Check it out at the [online demo](https://ugackminer53.github.io/scrawl/) here!
 
 ## Features:
 - Adds title, author, link, date, and a hash to the text
