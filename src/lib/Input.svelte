@@ -18,4 +18,4 @@
     }
 </script>
 
-<textarea name="Story Input" placeholder="Enter a story..." id="storyInput" spellcheck="false" bind:value={$storyText} on:emptied={handleTextChange} on:input={handleTextChange} />
+<textarea name="Story Input" placeholder="Enter some text..." id="storyInput" spellcheck="false" bind:value={$storyText} on:emptied={handleTextChange} on:input={handleTextChange} />
