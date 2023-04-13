@@ -11,7 +11,7 @@
         sha256sum($storyText).then((checksum) => {
             $scrawlInfo.checksum = checksum;
         }).finally(() => {
-            let invisibleData = "\u200b\u200c\ufeff\u2062" + Map.stringToInvisible(JSON.stringify($scrawlInfo)) + "\u2063\u2064\u2061";
+            let invisibleData = "\u200b\u200c\ufeff\u2062" + Map.stringToInvisible(JSON.stringify(Object.values($scrawlInfo))) + "\u2063\u2064\u2061";
             let storyArray = Array.from($storyText);
             storyArray.splice(Math.floor(Math.random() * (storyArray.length-1)), 0, invisibleData);
             $storyText = storyArray.join("");

@@ -26,7 +26,14 @@ function get__store(store) : any {
 export function parseScrawlStory(story : string) {
     try {
         let JSONdata = Map.invisibleToString(story.substring(story.indexOf("\u200b\u200c\ufeff\u2062")+4, story.indexOf("\u2063\u2064\u2061")));
-        scrawlInfo.set(JSON.parse(JSONdata));
+        let invisibleArray = JSON.parse(JSONdata);
+        scrawlInfo.set({
+            title: invisibleArray[0],
+            author: invisibleArray[1],
+            link: invisibleArray[2],
+            date: invisibleArray[3],
+            checksum: invisibleArray[4]
+        });
         sha256sum(story.substring(0, story.indexOf("\u200b\u200c\ufeff\u2062")) + story.substring(story.indexOf("\u2063\u2064\u2061")+3, story.length)).then(checksum => {
             if (get__store(scrawlInfo).checksum == checksum) {
                 valid.set(true);
